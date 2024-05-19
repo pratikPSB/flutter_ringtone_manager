@@ -43,6 +43,11 @@ abstract class FlutterRingtoneManagerPlatform extends PlatformInterface {
   }
 
   FutureOr<void> playIosSystemSoundByID(int id) {
-    throw UnimplementedError('playIosSystemSoundByID is iOS platform specific method which is not implemented');
+    throw UnimplementedError(
+        'playIosSystemSoundByID is iOS platform specific method which is not implemented');
+  }
+
+  FutureOr<void> stop() {
+    throw UnimplementedError('stop() has not been implemented');
   }
 }

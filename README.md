@@ -3,13 +3,25 @@
 A Flutter project to play default sounds of the devices such as Ringtone, Alarm, Notification and custom quick sound. RingtoneManager provides access to ringtones, notification, and other types of sounds. This plugin is capable of accessing all the features of native methods in both `Android & iOS`.
 
 ## Key features
-- Four types of the sound effect can play with this this package as below
+- Below types of the sound effect can play with this this package
     - Ringtone
     - Alarm
     - Notification
     - Custom asset sound
+    - System sound by ID in iOS(default short/alert sounds)
 
 ## Getting Started
+
+Playing Custom sound that located under flutter `assets` folder is the key feature of this plugin as below, sound file name with its extension must be provided. Mention the sub-folder name along with file name if the file is not directly located into `assets` folder.
+```dart
+ElevatedButton(
+  onPressed: () {
+      _flutterRingtoneManager
+              .playAudioAsset("audio/test.mp3");
+    },
+    child: const Text("Play custom Asset"))
+```
+
 
 ```dart
 import 'dart:async';
@@ -68,7 +80,15 @@ class _MyAppState extends State<MyApp> {
                                     _flutterRingtoneManager
                                             .playAudioAsset("audio/test.mp3");
                                   },
-                                  child: const Text("Play custom Asset"))
+                                  child: const Text("Play custom Asset")),
+                          ElevatedButton(
+                                  onPressed: () => _flutterRingtoneManager.stop(),
+                                  style: ButtonStyle(
+                                          foregroundColor:
+                                          WidgetStateProperty.all(Colors.white),
+                                          backgroundColor:
+                                          WidgetStateProperty.all<Color>(Colors.red)),
+                                  child: const Text("Stop"))
                         ],
                       ))),
     );

@@ -42,4 +42,9 @@ class MethodChannelFlutterRingtoneManager
   FutureOr<void> playIosSystemSoundByID(int id) {
     methodChannel.invokeMethod('playSystemSound', {'soundID': id});
   }
+
+  @override
+  FutureOr<void> stop() {
+    methodChannel.invokeMethod('stop');
+  }
 }

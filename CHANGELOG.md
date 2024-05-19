@@ -1,3 +1,9 @@
+## 1.1.0+1
+* README.md updated
+
+## 1.1.0
+* Stop method added for both iOS and Android platform.
+
 ## 1.0.0
 * Custom sound file can play which locates under assets folder in the root directory of the flutter app
 * API for Custom sound play method available for both iOS and Android platform.

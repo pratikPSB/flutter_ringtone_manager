@@ -32,4 +32,8 @@ class FlutterRingtoneManager {
     return FlutterRingtoneManagerPlatform.instance
         .playIosSystemSoundByID(id.value);
   }
+
+  FutureOr<void> stop() {
+    return FlutterRingtoneManagerPlatform.instance.stop();
+  }
 }

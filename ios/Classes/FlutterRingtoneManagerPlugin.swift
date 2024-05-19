@@ -34,6 +34,10 @@ public class FlutterRingtoneManagerPlugin: NSObject, FlutterPlugin {
             playSoundByID(id: 1005)
         case "playNotification":
             playSoundByID(id: 1007)
+        case "stop":
+            if(audioPlayer != nil && ((audioPlayer?.isPlaying) != nil)) {
+                audioPlayer?.stop()
+            }
         default:
             result(FlutterMethodNotImplemented)
         }

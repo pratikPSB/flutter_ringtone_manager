@@ -24,7 +24,8 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
     private var ringtone: Ringtone? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-        this.channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_ringtone_manager")
+        this.channel =
+            MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_ringtone_manager")
         this.channel.setMethodCallHandler(this)
         this.context = flutterPluginBinding.applicationContext
     }
@@ -35,14 +36,17 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
                 playRingtone(result)
                 result.success(null)
             }
+
             "playAlarm" -> {
                 playAlarm(result)
                 result.success(null)
             }
+
             "playNotification" -> {
                 playNotification(result)
                 result.success(null)
             }
+
             "playAudioAsset" -> {
                 val uri = call.argument<String>("uri")
                 if (uri != null) {
@@ -52,6 +56,13 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
                 }
                 result.success(null)
             }
+
+            "stop" -> {
+                if (ringtone?.isPlaying == true) {
+                    ringtone?.stop()
+                }
+            }
+
             else -> {
                 result.notImplemented()
             }
@@ -63,20 +74,31 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     private fun playRingtone(result: MethodChannel.Result) {
-        playUri(RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE), result)
+        playUri(
+            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE),
+            result
+        )
     }
 
     private fun playAlarm(result: MethodChannel.Result) {
-        playUri(RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_ALARM), result)
+        playUri(
+            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_ALARM),
+            result
+        )
     }
 
     private fun playNotification(result: MethodChannel.Result) {
-        playUri(RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_NOTIFICATION), result)
+        playUri(
+            RingtoneManager.getActualDefaultRingtoneUri(
+                context,
+                RingtoneManager.TYPE_NOTIFICATION
+            ), result
+        )
     }
 
     private fun playUri(uri: Uri, result: MethodChannel.Result) {
         try {
-            if(ringtone != null && ringtone!!.isPlaying) {
+            if (ringtone != null && ringtone!!.isPlaying) {
                 ringtone!!.stop()
             }
             ringtone = RingtoneManager.getRingtone(context, uri)

@@ -22,6 +22,9 @@ class MockFlutterRingtoneManagerPlatform
 
   @override
   FutureOr<void> playIosSystemSoundByID(int id) {}
+
+  @override
+  FutureOr<void> stop() {}
 }
 
 void main() {

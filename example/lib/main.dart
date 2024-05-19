@@ -54,7 +54,15 @@ class _MyAppState extends State<MyApp> {
                         _flutterRingtoneManager
                             .playAudioAsset("audio/test.mp3");
                       },
-                      child: const Text("Play custom Asset"))
+                      child: const Text("Play custom Asset")),
+                  ElevatedButton(
+                      onPressed: () => _flutterRingtoneManager.stop(),
+                      style: ButtonStyle(
+                          foregroundColor:
+                              WidgetStateProperty.all(Colors.white),
+                          backgroundColor:
+                              WidgetStateProperty.all<Color>(Colors.red)),
+                      child: const Text("Stop"))
                 ],
               ))),
     );
