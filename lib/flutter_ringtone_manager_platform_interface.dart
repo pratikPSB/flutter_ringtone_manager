@@ -41,4 +41,8 @@ abstract class FlutterRingtoneManagerPlatform extends PlatformInterface {
   FutureOr<void> playAudioAsset(String assetPath) {
     throw UnimplementedError('playAudioAsset() has not been implemented');
   }
+
+  FutureOr<void> playIosSystemSoundByID(int id) {
+    throw UnimplementedError('playIosSystemSoundByID is iOS platform specific method which is not implemented');
+  }
 }

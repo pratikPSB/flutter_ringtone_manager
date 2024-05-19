@@ -1,6 +1,6 @@
 name: flutter_ringtone_manager_example
 description: "Demonstrates how to use the flutter_ringtone_manager plugin."
-version: 0.1.1
+version: 1.0.0
 
 environment:
   sdk: '>=3.3.4 <4.0.0'

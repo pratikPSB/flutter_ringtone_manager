@@ -37,4 +37,9 @@ class MethodChannelFlutterRingtoneManager
     await file.writeAsBytes(bytes.buffer.asUint8List());
     methodChannel.invokeMethod('playAudioAsset', {'uri': file.uri.path});
   }
+
+  @override
+  FutureOr<void> playIosSystemSoundByID(int id) {
+    methodChannel.invokeMethod('playSystemSound', {'soundID': id});
+  }
 }

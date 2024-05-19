@@ -1,6 +1,6 @@
 name: flutter_ringtone_manager
 description: "A flutter RingtoneManager provides access to ringtones, notification, and other types of sounds for both Android & iOS platforms"
-version: 0.1.1
+version: 1.0.0
 homepage: https://github.com/trdevendran/flutter_ringtone_manager.git
 
 environment:
