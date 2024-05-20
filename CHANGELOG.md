@@ -1,3 +1,7 @@
+## 1.1.0+2
+* README.md updated
+* Code refactor in Android native class
+
 ## 1.1.0+1
 * README.md updated
 

@@ -1,7 +1,9 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_manager/flutter_ringtone_manager.dart';
+import 'package:flutter_ringtone_manager/ios_system_sounds.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,6 +57,13 @@ class _MyAppState extends State<MyApp> {
                             .playAudioAsset("audio/test.mp3");
                       },
                       child: const Text("Play custom Asset")),
+                  if (Platform.isIOS)
+                    OutlinedButton(
+                        onPressed: () {
+                          _flutterRingtoneManager
+                              .playIosSystemSoundByID(SystemSoundID.mailSent);
+                        },
+                        child: const Text("Play Notification")),
                   ElevatedButton(
                       onPressed: () => _flutterRingtoneManager.stop(),
                       style: ButtonStyle(

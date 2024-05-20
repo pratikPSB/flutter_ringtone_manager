@@ -3,6 +3,9 @@ package com.example.flutter_ringtone_manager
 import android.content.Context
 import android.media.Ringtone
 import android.media.RingtoneManager
+import android.media.RingtoneManager.TYPE_ALARM
+import android.media.RingtoneManager.TYPE_NOTIFICATION
+import android.media.RingtoneManager.TYPE_RINGTONE
 import android.net.Uri
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.MethodCall
@@ -19,8 +22,6 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
 
     private lateinit var context: Context
 
-    private lateinit var ringtoneManager: RingtoneManager
-
     private var ringtone: Ringtone? = null
 
     override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
@@ -33,17 +34,15 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "playRingtone" -> {
-                playRingtone(result)
-                result.success(null)
+                playDefaultSoundByID(result, TYPE_RINGTONE)
             }
 
             "playAlarm" -> {
-                playAlarm(result)
-                result.success(null)
+                playDefaultSoundByID(result, TYPE_ALARM)
             }
 
             "playNotification" -> {
-                playNotification(result)
+                playDefaultSoundByID(result, TYPE_NOTIFICATION)
                 result.success(null)
             }
 
@@ -73,26 +72,10 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null)
     }
 
-    private fun playRingtone(result: MethodChannel.Result) {
+    private fun playDefaultSoundByID(result: MethodChannel.Result, id: Int) {
         playUri(
-            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE),
+            RingtoneManager.getActualDefaultRingtoneUri(context, id),
             result
-        )
-    }
-
-    private fun playAlarm(result: MethodChannel.Result) {
-        playUri(
-            RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_ALARM),
-            result
-        )
-    }
-
-    private fun playNotification(result: MethodChannel.Result) {
-        playUri(
-            RingtoneManager.getActualDefaultRingtoneUri(
-                context,
-                RingtoneManager.TYPE_NOTIFICATION
-            ), result
         )
     }
 
