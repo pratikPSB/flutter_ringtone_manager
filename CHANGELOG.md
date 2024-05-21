@@ -1,3 +1,6 @@
+# 1.1.1
+* Exist playing sound stop when play again to avoid sound overlap issue
+
 ## 1.1.0+2
 * README.md updated
 * Code refactor in Android native class

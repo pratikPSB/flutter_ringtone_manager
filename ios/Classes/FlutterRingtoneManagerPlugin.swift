@@ -35,9 +35,7 @@ public class FlutterRingtoneManagerPlugin: NSObject, FlutterPlugin {
         case "playNotification":
             playSoundByID(id: 1007)
         case "stop":
-            if(audioPlayer != nil && ((audioPlayer?.isPlaying) != nil)) {
-                audioPlayer?.stop()
-            }
+            stop()
         default:
             result(FlutterMethodNotImplemented)
         }
@@ -53,6 +51,9 @@ public class FlutterRingtoneManagerPlugin: NSObject, FlutterPlugin {
         
         let fileURL = URL(fileURLWithPath: path)
         do {
+            /// Stops the player if already playing
+            stop()
+            
             audioPlayer = try AVAudioPlayer(contentsOf: fileURL)
             guard let duration = audioPlayer?.duration else {
                 print("unable to detect duration of the sound")
@@ -80,6 +81,12 @@ public class FlutterRingtoneManagerPlugin: NSObject, FlutterPlugin {
             }
         } else {
             print("Error: Unable to create sound ID, status: \(status)")
+        }
+    }
+    
+    func stop() {
+        if(audioPlayer != nil && ((audioPlayer?.isPlaying) != nil)) {
+            audioPlayer?.stop()
         }
     }
 }
