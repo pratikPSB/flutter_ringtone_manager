@@ -1,6 +1,6 @@
 # flutter_ringtone_manager
 
-A Flutter RingtoneManager allows developers to play default system sounds of the devices and custom short sound. The RingtoneManager (also known as RingtonePlayer) provides access to default ringtones, alarm & notification in `Android` and all the default short/alert sounds in iOS.
+A Flutter RingtoneManager (AudioManager or RingtonePlayer) allows developers to play default system sounds of the devices and custom short sound. The RingtoneManager (also known as RingtonePlayer) provides access to default ringtones, alarm & notification in `Android` and all the default short/alert sounds in iOS.
 
 Especially this plugin seamlessly play custom sound file in both `Android & iOS` platforms.
 

@@ -1,3 +1,6 @@
+# 1.1.2
+* Short sound overlap issue is fixed in iOS
+
 # 1.1.1
 * Exist playing sound stop when play again to avoid sound overlap issue
 
