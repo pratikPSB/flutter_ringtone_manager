@@ -50,4 +50,8 @@ abstract class FlutterRingtoneManagerPlatform extends PlatformInterface {
   FutureOr<void> stop() {
     throw UnimplementedError('stop() has not been implemented');
   }
+
+  FutureOr<String?> getUriOfSystemSoundByID(int id) {
+    throw UnimplementedError('stop() has not been implemented');
+  }
 }

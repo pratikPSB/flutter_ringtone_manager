@@ -46,4 +46,9 @@ class MethodChannelFlutterRingtoneManager extends FlutterRingtoneManagerPlatform
   FutureOr<void> stop() {
     methodChannel.invokeMethod('stop');
   }
+
+  @override
+  FutureOr<String?> getUriOfSystemSoundByID(int id) async {
+    return await methodChannel.invokeMethod('getUriOfSystemSoundByID', {'soundID': id});
+  }
 }

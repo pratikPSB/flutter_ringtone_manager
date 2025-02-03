@@ -46,4 +46,14 @@ class FlutterRingtoneManager {
   FutureOr<void> stop() {
     return FlutterRingtoneManagerPlatform.instance.stop();
   }
+
+  /// gets the URI of the default sound which provides in iOS platform based on ids
+  /// & for Android platform we are using three of the [SystemSoundID] to get the URIs
+  /// 1. [SystemSoundID.alarm] will work in both android & ios to get the alarm sound URI
+  /// 2. [SystemSoundID.newMail] will work in both android & ios to get the Ringtone sound URI
+  /// 3. [SystemSoundID.smsReceived] will work in both android & ios to get the Notification sound URI
+  /// Note: iOS SDK not provides those values as a predefined and it may change based new versions
+  FutureOr<String?> getUriOfSystemSoundByID(SystemSoundID id) {
+    return FlutterRingtoneManagerPlatform.instance.getUriOfSystemSoundByID(id.value);
+  }
 }

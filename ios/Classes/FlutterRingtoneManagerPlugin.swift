@@ -44,6 +44,17 @@ public class FlutterRingtoneManagerPlugin: NSObject, FlutterPlugin {
             playSoundByID(id: 1007, isLoop: isLoop)
         case "stop":
             stop()
+        case "getUriOfSystemSoundByID":
+            if let args = call.arguments as? [String: Any],
+               let id = args["soundID"] as? Int {
+                if let soundURL = getSystemSoundPath(for: id) {
+                    result(soundURL.absoluteString) // Return the URI as a string
+                } else {
+                    result(FlutterError(code: "ID_NOT_FOUND", message: "Invalid system sound ID provided", details: nil))
+                }
+            } else {
+                result(FlutterError(code: "INVALID_ARGUMENTS", message: "Missing or invalid soundID", details: nil))
+            }
         default:
             result(FlutterMethodNotImplemented)
         }
