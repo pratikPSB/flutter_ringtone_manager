@@ -26,11 +26,11 @@ abstract class FlutterRingtoneManagerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  FutureOr<void> playRingtone() {
+  FutureOr<void> playRingtone({bool playInLoop = false}) {
     throw UnimplementedError('playRingtone() has not been implemented');
   }
 
-  FutureOr<void> playAlarm() {
+  FutureOr<void> playAlarm({bool playInLoop = false}) {
     throw UnimplementedError('playAlarm() has not been implemented');
   }
 
@@ -38,11 +38,11 @@ abstract class FlutterRingtoneManagerPlatform extends PlatformInterface {
     throw UnimplementedError('playNotification() has not been implemented');
   }
 
-  FutureOr<void> playAudioAsset(String assetPath) {
+  FutureOr<void> playAudioAsset(String assetPath, {bool playInLoop = false}) {
     throw UnimplementedError('playAudioAsset() has not been implemented');
   }
 
-  FutureOr<void> playIosSystemSoundByID(int id) {
+  FutureOr<void> playIosSystemSoundByID(int id, {bool playInLoop = false}) {
     throw UnimplementedError(
         'playIosSystemSoundByID is iOS platform specific method which is not implemented');
   }

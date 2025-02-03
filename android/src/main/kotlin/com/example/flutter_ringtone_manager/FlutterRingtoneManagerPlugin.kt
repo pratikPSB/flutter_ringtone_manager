@@ -34,11 +34,13 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when (call.method) {
             "playRingtone" -> {
-                playDefaultSoundByID(result, TYPE_RINGTONE)
+                val isLoop = call.argument<Boolean>("isLoop") ?: false
+                playDefaultSoundByID(result, TYPE_RINGTONE, isLoop)
             }
 
             "playAlarm" -> {
-                playDefaultSoundByID(result, TYPE_ALARM)
+                val isLoop = call.argument<Boolean>("isLoop") ?: false
+                playDefaultSoundByID(result, TYPE_ALARM, isLoop)
             }
 
             "playNotification" -> {
@@ -48,8 +50,9 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
 
             "playAudioAsset" -> {
                 val uri = call.argument<String>("uri")
+                val isLoop = call.argument<Boolean>("isLoop") ?: false
                 if (uri != null) {
-                    playUri(Uri.parse(uri!!), result)
+                    playUri(Uri.parse(uri!!), result, isLoop)
                 } else {
                     result.error("PLAY_FAILED", "assetPath can not be null", null)
                 }
@@ -72,19 +75,21 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
         channel.setMethodCallHandler(null)
     }
 
-    private fun playDefaultSoundByID(result: MethodChannel.Result, id: Int) {
+    private fun playDefaultSoundByID(result: MethodChannel.Result, id: Int, isLoop: Boolean = false) {
         playUri(
             RingtoneManager.getActualDefaultRingtoneUri(context, id),
-            result
+            result,
+            isLoop
         )
     }
 
-    private fun playUri(uri: Uri, result: MethodChannel.Result) {
+    private fun playUri(uri: Uri, result: MethodChannel.Result, isLoop: Boolean) {
         try {
             if (ringtone != null && ringtone!!.isPlaying) {
                 ringtone!!.stop()
             }
             ringtone = RingtoneManager.getRingtone(context, uri)
+            ringtone?.isLooping = isLoop
             ringtone?.play()
         } catch (e: Exception) {
             e.printStackTrace()

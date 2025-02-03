@@ -44,7 +44,7 @@ class _MyAppState extends State<MyApp> {
                       },
                       child: const Text("Play Ringtone")),
                   OutlinedButton(
-                      onPressed: () => {_flutterRingtoneManager.playAlarm()},
+                      onPressed: () => {_flutterRingtoneManager.playAlarm(playInLoop: true)},
                       child: const Text('Play Alarm')),
                   OutlinedButton(
                       onPressed: () {
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
                   ElevatedButton(
                       onPressed: () {
                         _flutterRingtoneManager
-                            .playAudioAsset("audio/test.mp3");
+                            .playAudioAsset("audio/test.mp3", playInLoop: false);
                       },
                       child: const Text("Play custom Asset")),
                   if (Platform.isIOS)

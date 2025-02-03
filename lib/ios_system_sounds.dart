@@ -92,8 +92,6 @@ extension SystemSoundIDExtension on SystemSoundID {
         return 1027;
       case SystemSoundID.simToolkitCallDropped:
         return 1028;
-      default:
-        throw Exception('Unknown SystemSoundID');
-    }
+      }
   }
 }

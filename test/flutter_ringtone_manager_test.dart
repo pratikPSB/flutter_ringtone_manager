@@ -9,19 +9,19 @@ class MockFlutterRingtoneManagerPlatform
     with MockPlatformInterfaceMixin
     implements FlutterRingtoneManagerPlatform {
   @override
-  FutureOr<void> playAlarm() {}
+  FutureOr<void> playAlarm({bool playInLoop = false}) {}
 
   @override
-  FutureOr<void> playAudioAsset(String assetPath) {}
+  FutureOr<void> playAudioAsset(String assetPath, {bool playInLoop = false}) {}
 
   @override
   FutureOr<void> playNotification() {}
 
   @override
-  FutureOr<void> playRingtone() {}
+  FutureOr<void> playRingtone({bool playInLoop = false}) {}
 
   @override
-  FutureOr<void> playIosSystemSoundByID(int id) {}
+  FutureOr<void> playIosSystemSoundByID(int id, {bool playInLoop = false}) {}
 
   @override
   FutureOr<void> stop() {}
