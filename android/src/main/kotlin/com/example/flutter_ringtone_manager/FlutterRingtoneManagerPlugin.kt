@@ -68,15 +68,15 @@ class FlutterRingtoneManagerPlugin : FlutterPlugin, MethodCallHandler {
                 val soundId = call.argument<Int>("soundID") ?: 1007
                 when (soundId) {
                     1007 -> {
-                        val smsSentToneUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
+                        val smsSentToneUri: Uri = RingtoneManager.getActualDefaultRingtoneUri(context, TYPE_NOTIFICATION)
                         result.success(smsSentToneUri.toString())
                     }
                     1005 -> {
-                        val alarmToneUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
+                        val alarmToneUri: Uri = RingtoneManager.getActualDefaultRingtoneUri(context, TYPE_ALARM)
                         result.success(alarmToneUri.toString())
                     }
                     1000 -> {
-                        val alarmToneUri: Uri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
+                        val alarmToneUri: Uri = RingtoneManager.getActualDefaultRingtoneUri(context, TYPE_RINGTONE)
                         result.success(alarmToneUri.toString())
                     }
                     else -> {

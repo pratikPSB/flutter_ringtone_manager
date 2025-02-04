@@ -18,6 +18,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _flutterRingtoneManager = FlutterRingtoneManager();
+  String? alarmUri = "get alarm Uri";
 
   @override
   void initState() {
@@ -43,6 +44,12 @@ class _MyAppState extends State<MyApp> {
                         _flutterRingtoneManager.playRingtone();
                       },
                       child: const Text("Play Ringtone")),
+                  OutlinedButton(
+                      onPressed: () async {
+                        alarmUri = await _flutterRingtoneManager.getUriOfSystemSoundByID(SystemSoundID.alarm);
+                        setState(() {});
+                      },
+                      child: Text(alarmUri!)),
                   OutlinedButton(
                       onPressed: () => {_flutterRingtoneManager.playAlarm(playInLoop: true)},
                       child: const Text('Play Alarm')),
